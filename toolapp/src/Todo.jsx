@@ -1,6 +1,6 @@
 import Table from 'react-bootstrap/Table';
 import { useSelector,useDispatch } from "react-redux";
-import { addTask } from "./todoSlice";
+import { addTask,removeTask } from "./todoSlice";
 import { useState } from "react";
 const Todo=()=>{
     const data=useSelector((state)=>state.todo.task)
@@ -14,6 +14,9 @@ const Todo=()=>{
             <tr>
                 <td>{sno}</td>
                 <td>{key.work}</td>
+                <td>
+                  <span onClick={()=>{dispatch(removeTask({id:key.id}))}}>remove</span>
+                </td>
             </tr>
             </>
         )
@@ -29,6 +32,7 @@ const Todo=()=>{
         <tr>
           <th>Sno</th>
           <th>Task</th>
+          <th>Remove</th>
         </tr>
       </thead>
       <tbody>
